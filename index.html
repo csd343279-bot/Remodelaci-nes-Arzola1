@@ -1,0 +1,2886 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Remodelaciones Arzola</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=DM+Serif+Display&family=Lobster&family=Allura&family=Cormorant+Garamond:ital@1&family=Parisienne&family=Montserrat:wght@900&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+body{
+font-family:Arial,sans-serif;
+background:#f3f3f3;
+padding:20px;
+}
+
+.container{
+max-width:1000px;
+margin:auto;
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 0 15px rgba(0,0,0,.15);
+}
+
+.logo-derecha{
+transform:scaleX(-1);
+}
+
+.encabezado{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:20px;
+flex-wrap:wrap;
+margin-bottom:30px;
+}
+
+.logo{
+width:80px;
+}
+
+.titulo{
+text-align:center;
+}
+
+.titulo h1{
+font-family:'Great Vibes', cursive;
+font-size:72px;
+font-weight:normal;
+color:#b88a3a;
+text-shadow:1px 1px 2px rgba(0,0,0,0.15);
+margin:0;
+}
+.titulo p{
+color:#666;
+}
+
+.section{
+margin-bottom:25px;
+}
+
+label{
+display:block;
+margin-bottom:8px;
+font-weight:bold;
+}
+
+input,
+textarea,
+select{
+width:100%;
+padding:10px;
+border:1px solid #ccc;
+border-radius:8px;
+}
+
+textarea{
+height:120px;
+}
+
+.font-option{
+display:flex;
+align-items:center;
+gap:12px;
+width:100%;
+padding:12px;
+border:2px solid #ddd;
+border-radius:10px;
+margin-bottom:10px;
+cursor:pointer;
+font-weight:normal;
+transition:
+background-color .2s,
+border-color .2s,
+box-shadow .2s;
+}
+
+.font-option:hover{
+background:#fff8e8;
+border-color:#b88a3a;
+}
+
+.font-option:has(input:checked){
+background:#fff3cf;
+border-color:#b88a3a;
+box-shadow:0 0 0 2px rgba(184,138,58,.15);
+}
+
+.font-option input[type="radio"],
+.font-option input[type="checkbox"]{
+width:auto;
+margin:0;
+padding:0;
+flex:none;
+accent-color:#b88a3a;
+}
+
+.color-grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(52px,1fr));
+gap:8px;
+margin-top:10px;
+}
+
+.color{
+position:relative;
+height:52px;
+padding:0;
+border:2px solid #ddd;
+border-radius:9px;
+cursor:pointer;
+transition:transform .15s,border-color .15s,box-shadow .15s;
+}
+
+.color::after{
+content:attr(data-numero);
+position:absolute;
+left:50%;
+top:50%;
+transform:translate(-50%,-50%);
+display:flex;
+align-items:center;
+justify-content:center;
+min-width:25px;
+height:25px;
+padding:0 5px;
+border-radius:50%;
+background:rgba(0,0,0,.72);
+color:#ffffff;
+font-family:Arial,sans-serif;
+font-size:12px;
+font-weight:bold;
+line-height:1;
+text-shadow:0 1px 2px #000000;
+box-shadow:0 1px 4px rgba(0,0,0,.35);
+pointer-events:none;
+}
+
+.color:hover{
+transform:scale(1.05);
+border-color:#8b6a2f;
+}
+
+.cruz-preview{
+position:relative;
+width:100%;
+max-width:420px;
+height:560px;
+margin:20px auto;
+overflow:hidden;
+}
+
+.cruz-img{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:contain;
+display:block;
+}
+
+.placa{
+position:absolute;
+top:43%;
+left:50%;
+transform:translate(-50%,-50%);
+width:170px;
+min-height:130px;
+padding:12px;
+background:#ffffff;
+border:3px solid #d4af37;
+border-radius:6px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:#000000;
+overflow:hidden;
+z-index:2;
+}
+
+.preview-nombre{
+display:inline-block;
+max-width:100%;
+font-size:18px;
+font-weight:bold;
+line-height:1.1;
+margin-bottom:8px;
+overflow-wrap:anywhere;
+}
+
+.preview-oracion{
+max-width:100%;
+font-size:11px;
+font-style:italic;
+line-height:1.15;
+margin-bottom:8px;
+overflow-wrap:anywhere;
+}
+
+#previewFechas{
+font-size:11px;
+line-height:1.25;
+margin-bottom:8px;
+}
+
+#previewParte{
+max-width:100%;
+font-size:10px;
+line-height:1.2;
+margin-bottom:8px;
+overflow-wrap:anywhere;
+}
+
+.epd{
+font-size:11px;
+font-style:italic;
+line-height:1.2;
+}
+
+@media(max-width:600px){
+
+.cruz-preview{
+max-width:340px;
+height:455px;
+}
+
+.placa{
+width:150px;
+min-height:115px;
+padding:9px;
+}
+
+.preview-nombre{
+font-size:16px;
+}
+
+.preview-oracion,
+#previewFechas,
+.epd{
+font-size:10px;
+}
+
+#previewParte{
+font-size:9px;
+}
+
+}
+
+.ayuda-color{
+margin:4px 0 10px;
+color:#666;
+font-size:14px;
+}
+
+.color.seleccionado{
+border-color:#111;
+box-shadow:
+0 0 0 3px #fff,
+0 0 0 5px #b88a3a;
+transform:scale(.95);
+}
+
+@media(max-width:600px){
+
+.color-grid{
+grid-template-columns:repeat(auto-fill,minmax(42px,1fr));
+gap:6px;
+}
+
+.color{
+height:44px;
+}
+
+.color::after{
+min-width:21px;
+height:21px;
+font-size:10px;
+padding:0 4px;
+}
+
+
+}
+
+.epd{
+font-size:11px;
+font-style:italic;
+}
+
+.opciones-color-placa{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+margin-top:10px;
+}
+
+.opcion-color-placa{
+position:relative;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:8px;
+min-height:105px;
+padding:12px;
+border:2px solid #ddd;
+border-radius:12px;
+cursor:pointer;
+font-weight:normal;
+text-align:center;
+transition:
+border-color .2s,
+background-color .2s,
+box-shadow .2s,
+transform .2s;
+}
+
+.opcion-color-placa:hover{
+border-color:#b88a3a;
+background:#fff8e8;
+transform:translateY(-2px);
+}
+
+.opcion-color-placa:has(input:checked){
+border-color:#b88a3a;
+background:#fff3cf;
+box-shadow:0 0 0 3px rgba(184,138,58,.18);
+}
+
+.opcion-color-placa input[type="radio"]{
+position:absolute;
+top:9px;
+left:9px;
+width:auto;
+margin:0;
+accent-color:#b88a3a;
+}
+
+.muestra-color-placa{
+display:block;
+width:58px;
+height:58px;
+border-radius:10px;
+border:2px solid #bbb;
+box-shadow:0 2px 5px rgba(0,0,0,.15);
+}
+
+.muestra-blanca{
+background:#fff;
+}
+
+.muestra-negra{
+background:#111;
+}
+
+.muestra-personalizada{
+background:
+conic-gradient(
+from 90deg,
+#ff0000,
+#ffff00,
+#00ff00,
+#00ffff,
+#0000ff,
+#ff00ff,
+#ff0000
+);
+}
+
+.selector-color-placa-box{
+margin-top:15px;
+padding:16px;
+border:2px solid #b88a3a;
+border-radius:12px;
+background:#f8f8f8;
+}
+
+.selector-color-contenido{
+display:flex;
+align-items:center;
+gap:14px;
+flex-wrap:wrap;
+}
+
+#selectorColorPlaca{
+width:100%;
+max-width:330px;
+height:85px;
+padding:4px;
+border:1px solid #aaa;
+border-radius:10px;
+cursor:pointer;
+background:#fff;
+}
+
+.codigo-color-placa{
+display:flex;
+align-items:center;
+gap:10px;
+padding:12px 16px;
+border:1px solid #bbb;
+border-radius:10px;
+background:#fff;
+font-family:monospace;
+font-size:18px;
+font-weight:bold;
+}
+
+.circulo-color-elegido{
+width:34px;
+height:34px;
+border-radius:50%;
+background:#8b4513;
+border:2px solid #aaa;
+}
+
+@media(max-width:600px){
+
+.opciones-color-placa{
+grid-template-columns:1fr;
+}
+
+.opcion-color-placa{
+min-height:85px;
+flex-direction:row;
+justify-content:flex-start;
+padding-left:48px;
+text-align:left;
+}
+
+.muestra-color-placa{
+width:48px;
+height:48px;
+}
+
+#selectorColorPlaca{
+max-width:none;
+}
+
+}
+
+#fichaSolicitud{
+position:fixed;
+left:-12000px;
+top:0;
+width:1000px;
+padding:38px;
+background:#ffffff;
+color:#222222;
+font-family:Arial,sans-serif;
+z-index:1;
+visibility:visible;
+pointer-events:none;
+}
+
+.ficha-encabezado{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:25px;
+padding-bottom:22px;
+border-bottom:3px solid #b88a3a;
+text-align:center;
+}
+
+.ficha-encabezado h2{
+margin:0;
+font-family:'Great Vibes',cursive;
+font-size:52px;
+font-weight:normal;
+color:#b88a3a;
+}
+
+.ficha-encabezado p{
+margin-top:5px;
+font-size:18px;
+color:#666;
+}
+
+.ficha-logo{
+width:78px;
+height:78px;
+object-fit:contain;
+}
+
+.ficha-logo-derecha{
+transform:scaleX(-1);
+}
+
+.ficha-contenido{
+display:block;
+margin-top:28px;
+}
+
+.ficha-datos{
+width:100%;
+padding:22px;
+border:2px solid #ddd;
+border-radius:14px;
+background:#fafafa;
+}
+
+.ficha-datos h3{
+margin:0 0 16px;
+padding-bottom:8px;
+border-bottom:2px solid #b88a3a;
+color:#7a5722;
+font-size:20px;
+}
+
+.ficha-datos h3:not(:first-child){
+margin-top:24px;
+}
+
+.ficha-fila{
+display:grid;
+grid-template-columns:165px 1fr;
+gap:12px;
+padding:8px 0;
+border-bottom:1px solid #e5e5e5;
+font-size:15px;
+line-height:1.35;
+}
+
+.ficha-fila strong{
+color:#4d4d4d;
+}
+
+.ficha-fila span{
+overflow-wrap:anywhere;
+white-space:pre-wrap;
+}
+
+.ficha-fila-grande{
+align-items:start;
+}
+
+.ficha-pie{
+margin-top:22px;
+padding-top:14px;
+border-top:2px solid #ddd;
+text-align:center;
+font-size:13px;
+color:#777;
+}
+
+button{
+width:100%;
+padding:15px;
+border:none;
+background:#b88a3a;
+color:white;
+font-size:18px;
+border-radius:10px;
+cursor:pointer;
+}
+
+button:hover{
+background:#9c732f;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="encabezado">
+
+<img 
+src="logo.png" class="logo">
+
+<div class="titulo">
+
+<h1>Remodelaciones Arzola</h1>
+<p>Solicitud de servicio</p>
+
+</div>
+
+<img 
+src="logo.png" class="logo logo-derecha">
+</div>
+
+<form
+    id="formularioSolicitud"
+    enctype="multipart/form-data"
+>
+
+<div class="section">
+
+<label>Nombre del Cliente</label>
+
+<input
+type="text"
+name="cliente"
+required>
+
+</div>
+
+<div class="section">
+
+<label>Teléfono</label>
+
+<input
+    type="tel"
+    id="telefono"
+    name="telefono"
+    autocomplete="tel"
+    maxlength="20"
+    placeholder="Ejemplo: 627 000 0000"
+    required>
+
+
+</div>
+
+<div class="section">
+
+<label>Método de Pago</label>
+
+<select
+name="opcion_pago"
+id="opcionPago"
+required
+onchange="togglePago()">
+
+<option value="">Seleccione una opción</option>
+
+<option value="transferencia">
+Pago por transferencia
+</option>
+
+<option value="efectivo">
+Pago en efectivo
+</option>
+
+<option value="pagado">
+Ya pagado
+</option>
+
+</select>
+
+</div>
+
+<div
+class="section"
+id="comprobanteBox"
+style="display:none;">
+
+<label>Comprobante de Pago</label>
+
+<input
+    type="file"
+    id="comprobante"
+    name="fi-file-comprobante"
+    accept="image/*"
+>
+
+</div>
+
+<div class="section">
+
+<label>Tipo de Servicio</label>
+
+<select name="servicio" required>
+
+<option value="">Seleccione una opción</option>
+<option>Solo letras</option>
+<option>Hoja completa con fondo</option>
+</select>
+
+</div>
+
+<div class="section">
+
+<label>Nombre del Difunto</label>
+
+<input
+type="text"
+id="texto"
+name="nombre_difunto"
+required>
+
+</div>
+
+<div class="section">
+
+<label>Tipo de Fuente</label>
+
+<label class="font-option">
+<input
+type="radio"
+name="fuente"
+value="Great Vibes"
+required
+onclick="setFont('Great Vibes')">
+
+<span style="font-family:'Great Vibes';font-size:35px;">
+Hola
+</span>
+</label>
+
+<label class="font-option">
+<input
+type="radio"
+name="fuente"
+value="DM Serif Display"
+onclick="setFont('DM Serif Display')">
+
+<span style="font-family:'DM Serif Display';font-size:30px;">
+Hola
+</span>
+</label>
+
+<label class="font-option">
+<input
+type="radio"
+name="fuente"
+value="Lobster"
+onclick="setFont('Lobster')">
+
+<span style="font-family:'Lobster';font-size:30px;">
+Hola
+</span>
+</label>
+
+<label class="font-option">
+<input
+type="radio"
+name="fuente"
+value="Allura"
+onclick="setFont('Allura')">
+
+<span style="font-family:'Allura';font-size:35px;">
+Hola
+</span>
+</label>
+
+<label class="font-option">
+<input
+type="radio"
+name="fuente"
+value="Cormorant Garamond"
+onclick="setFont('Cormorant Garamond')">
+
+<span style="font-family:'Cormorant Garamond';font-size:32px;">
+Hola
+</span>
+</label>
+
+<label class="font-option">
+<input
+type="radio"
+name="fuente"
+value="Parisienne"
+onclick="setFont('Parisienne')">
+
+<span style="font-family:'Parisienne';font-size:35px;">
+Hola
+</span>
+</label>
+
+<label class="font-option">
+<input
+type="radio"
+name="fuente"
+value="UnifrakturCook"
+onclick="setFont('UnifrakturCook')">
+
+<span style="font-family:'UnifrakturCook';font-size:35px;">
+Hola
+</span>
+</label>
+
+<label class="font-option">
+<input
+type="radio"
+name="fuente"
+value="Montserrat"
+onclick="setFont('Montserrat')">
+
+<span style="font-family:'Montserrat';font-size:28px;font-weight:900;">
+HOLA
+</span>
+</label>
+
+</div>
+
+<div class="section">
+
+<label>Vista Previa</label>
+
+<div class="cruz-preview">
+
+<img
+src="cruz.png"
+id="imagenCruz"
+class="cruz-img"
+alt="Vista previa de la cruz">
+
+<div
+id="placaPreview"
+class="placa">
+
+<div
+id="previewNombre"
+class="preview-nombre">
+
+Tu Nombre Aquí
+
+</div>
+
+<div
+id="previewOracion"
+class="preview-oracion"
+style="display:none;">
+
+Oración
+
+</div>
+
+<div
+id="previewFechas">
+
+00/00/0000
+<br>
+00/00/0000
+
+</div>
+
+<div
+id="previewParte">
+
+De parte de sus
+
+</div>
+
+<div class="epd">
+
+En Paz Descanse
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="section" id="seccionColorPlaca">
+
+<label>Seleccionar color de la placa</label>
+
+<div class="opciones-color-placa">
+
+<label class="opcion-color-placa">
+
+<input
+type="radio"
+id="placaBlanca"
+name="tipo_color_placa"
+value="Blanco"
+required>
+
+<span
+class="muestra-color-placa muestra-blanca">
+</span>
+
+<span>Color blanco</span>
+
+</label>
+
+<label class="opcion-color-placa">
+
+<input
+type="radio"
+id="placaNegra"
+name="tipo_color_placa"
+value="Negro">
+
+<span
+class="muestra-color-placa muestra-negra">
+</span>
+
+<span>Color negro</span>
+
+</label>
+
+<label class="opcion-color-placa opcion-personalizada">
+
+<input
+type="radio"
+id="radioOtroColor"
+name="tipo_color_placa"
+value="Otro color">
+
+<span
+class="muestra-color-placa muestra-personalizada"
+id="muestraPersonalizada">
+</span>
+
+<span>Otro color</span>
+
+</label>
+
+</div>
+
+<div
+id="selectorColorPlacaBox"
+class="selector-color-placa-box"
+style="display:none;">
+
+<label for="selectorColorPlaca">
+Elige el color de la placa
+</label>
+
+<div class="selector-color-contenido">
+
+<input
+type="color"
+id="selectorColorPlaca"
+value="#8b4513"
+aria-label="Seleccionar otro color para la placa">
+
+<div class="codigo-color-placa">
+
+<span
+id="circuloColorElegido"
+class="circulo-color-elegido">
+</span>
+
+<span id="codigoColorPlaca">
+#8B4513
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+<input
+type="hidden"
+id="colorPlacaSeleccionado"
+name="color_placa">
+
+</div>
+
+<div class="section">
+
+<label>Selecciona un color por número</label>
+
+<p class="ayuda-color">
+Pulsa el número del color que deseas.
+</p>
+
+<input
+type="hidden"
+id="colorSeleccionado"
+name="color_seleccionado"
+required>
+
+<div
+class="color-grid"
+id="catalogoColores">
+</div>
+
+<p
+id="mensajeColor"
+style="display:none;color:#b00020;margin-top:8px;">
+Selecciona un color.
+</p>
+
+</div>
+
+<div class="section">
+
+<label>Fecha de Nacimiento</label>
+
+<input
+type="date"
+id="fechaNacimiento"
+name="nacimiento">
+
+</div>
+
+<div class="section">
+
+<label>Fecha de Defunción</label>
+
+<input
+type="date"
+id="fechaDefuncion"
+name="defuncion">
+
+</div>
+
+<div class="section">
+
+<label>De Parte de</label>
+
+<input
+type="text"
+id="parteDe"
+name="dedicatoria">
+
+</div>
+
+<div class="section">
+
+<label>¿Agregar oración?</label>
+
+<label class="font-option">
+<input
+type="radio"
+name="usar_oracion"
+value="si"
+onclick="toggleOracion(true)">
+Sí
+</label>
+
+<label class="font-option">
+<input
+type="radio"
+name="usar_oracion"
+value="no"
+checked
+onclick="toggleOracion(false)">
+No
+</label>
+
+</div>
+
+<div
+class="section"
+id="tiposOracionBox"
+style="display:none;">
+
+<label>Selecciona el tipo de oración</label>
+
+<label class="font-option">
+<input
+type="radio"
+name="tipo_oracion"
+value="Cristiana"
+onclick="seleccionarTipoOracion('Cristiana')">
+Cristiana
+</label>
+
+<label class="font-option">
+<input
+type="radio"
+name="tipo_oracion"
+value="Católica"
+onclick="seleccionarTipoOracion('Católica')">
+Católica
+</label>
+
+<label class="font-option">
+<input
+type="radio"
+name="tipo_oracion"
+value="Otra religión"
+onclick="seleccionarTipoOracion('Otra religión')">
+Otra religión
+</label>
+
+<label class="font-option">
+
+    <input
+        type="radio"
+        name="tipo_oracion"
+        value="Personalizada"
+        onclick="seleccionarTipoOracion('Personalizada')"
+    >
+
+    Elegir a voluntad la oración
+
+</label>
+
+</div>
+
+<div
+class="section"
+id="oracionPersonalizadaBox"
+style="display:none;">
+
+<label>Escribe la oración</label>
+
+<textarea
+id="oracionTexto"
+name="oracion_personalizada"
+placeholder="Escribe aquí la oración que deseas colocar..."></textarea>
+
+</div>
+
+<div class="section">
+    <label for="largo">Largo (pulgadas)</label>
+
+    <input
+        type="number"
+        id="largo"
+        name="largo"
+        min="0"
+        step="0.01"
+    >
+</div>
+
+<div class="section">
+    <label for="ancho">Ancho (pulgadas)</label>
+
+    <input
+        type="number"
+        id="ancho"
+        name="ancho"
+        min="0"
+        step="0.01"
+    >
+</div>
+
+<div class="section">
+    <h3>Ubicación de la Tumba</h3>
+
+    <div
+        style="
+            display:grid;
+            grid-template-columns:repeat(2, minmax(0, 1fr));
+            gap:15px;
+            margin-top:15px;
+            margin-bottom:20px;
+        "
+    >
+        <div>
+            <label for="lote">Lote</label>
+
+            <input
+                type="number"
+                id="lote"
+                name="lote"
+                min="1"
+                step="1"
+            >
+        </div>
+
+        <div>
+            <label for="linea">Línea</label>
+
+            <input
+                type="number"
+                id="linea"
+                name="linea"
+                min="1"
+                step="1"
+            >
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <label>Solicitar Búsqueda</label>
+
+    <label class="font-option">
+        <input
+            type="radio"
+            name="solicitar_busqueda"
+            value="Sí"
+            onclick="toggleBusqueda(true)"
+        >
+
+        <span>
+            Sí, solicitar búsqueda al servicio
+        </span>
+    </label>
+
+    <label class="font-option">
+        <input
+            type="radio"
+            name="solicitar_busqueda"
+            value="No"
+            checked
+            onclick="toggleBusqueda(false)"
+        >
+
+        <span>No</span>
+    </label>
+</div>
+
+<div
+    class="section"
+    id="referenciasBox"
+    style="display:none;"
+>
+    <label for="referenciasCercanas">
+        Referencias Cercanas a la Tumba
+    </label>
+
+    <textarea
+        id="referenciasCercanas"
+        name="referencias_cercanas"
+        placeholder="Ejemplo: frente a la capilla, junto al árbol grande, cerca de la entrada principal..."
+    ></textarea>
+</div>
+
+<div class="section">
+    <label for="fotografia">
+        Fotografía de Referencia
+    </label>
+
+    <input
+    type="file"
+    id="fotografia"
+    name="fi-file-fotografia"
+    accept="image/*"
+>
+</div>
+
+<div class="section">
+    <label for="comentarios">Comentarios</label>
+
+    <textarea
+        id="comentarios"
+        name="comentarios"
+    ></textarea>
+</div>
+
+<div
+id="estadoGeneracion"
+style="
+display:none;
+margin-bottom:15px;
+padding:12px;
+border-radius:8px;
+background:#fff3cf;
+color:#604500;
+text-align:center;
+font-weight:bold;
+">
+Preparando imagen de la solicitud...
+</div>
+
+<input
+    type="file"
+    id="imagenSolicitud"
+    name="fi-file-imagen_solicitud"
+    accept="image/png"
+    hidden
+>
+
+<div
+id="fichaSolicitud"
+aria-hidden="true">
+
+<div class="ficha-encabezado">
+
+<img
+src="logo.png"
+class="ficha-logo"
+alt="">
+
+<div>
+<h2>Remodelaciones Arzola</h2>
+<p>Solicitud de servicio</p>
+</div>
+
+<img
+src="logo.png"
+class="ficha-logo ficha-logo-derecha"
+alt="">
+
+</div>
+
+<div class="ficha-contenido">
+
+<div class="ficha-datos">
+
+<h3>Datos del cliente</h3>
+
+<div class="ficha-fila">
+<strong>Nombre:</strong>
+<span id="fichaCliente"></span>
+</div>
+
+<div class="ficha-fila">
+<strong>Teléfono:</strong>
+<span id="fichaTelefono"></span>
+</div>
+
+<div class="ficha-fila">
+<strong>Método de pago:</strong>
+<span id="fichaPago"></span>
+</div>
+
+<div class="ficha-fila">
+<strong>Tipo de servicio:</strong>
+<span id="fichaServicio"></span>
+</div>
+
+<h3>Diseño solicitado</h3>
+
+<div class="ficha-fila">
+<strong>Nombre del difunto:</strong>
+<span id="fichaDifunto"></span>
+</div>
+
+<div class="ficha-fila">
+<strong>Fuente:</strong>
+<span id="fichaFuente"></span>
+</div>
+
+<div class="ficha-fila">
+<strong>Color del texto:</strong>
+<span id="fichaColorTexto"></span>
+</div>
+
+<div class="ficha-fila">
+<strong>Color de placa:</strong>
+<span id="fichaColorPlaca"></span>
+</div>
+
+<div class="ficha-fila">
+<strong>Nacimiento:</strong>
+<span id="fichaNacimiento"></span>
+</div>
+
+<div class="ficha-fila">
+<strong>Defunción:</strong>
+<span id="fichaDefuncion"></span>
+</div>
+
+<div class="ficha-fila">
+<strong>De parte de:</strong>
+<span id="fichaDedicatoria"></span>
+</div>
+
+<div class="ficha-fila">
+<strong>Oración:</strong>
+<span id="fichaOracion"></span>
+</div>
+
+<div class="ficha-fila">
+<strong>Medidas:</strong>
+<span id="fichaMedidas"></span>
+</div>
+
+<h3>Ubicación</h3>
+
+<div class="ficha-fila">
+<strong>Lote:</strong>
+<span id="fichaLote"></span>
+</div>
+
+<div class="ficha-fila">
+<strong>Línea:</strong>
+<span id="fichaLinea"></span>
+</div>
+
+<div class="ficha-fila">
+<strong>Solicitar búsqueda:</strong>
+<span id="fichaBusqueda"></span>
+</div>
+
+<div class="ficha-fila ficha-fila-grande">
+<strong>Referencias:</strong>
+<span id="fichaReferencias"></span>
+</div>
+
+<div class="ficha-fila ficha-fila-grande">
+
+   
+<strong>Comentarios:</strong>
+<span id="fichaComentarios"></span>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="ficha-pie">
+Solicitud generada automáticamente
+</div>
+
+</div>
+
+<button
+    type="submit"
+    id="botonEnviar"
+>
+    Enviar Solicitud
+</button>
+
+</form>
+
+</div>
+
+<script 
+src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js">
+</script>
+
+<script
+    src="https://forminit.com/sdk/v1/forminit.js"
+></script>
+
+<script>
+
+const placaPreview =
+document.getElementById("placaPreview");
+
+const imagenCruz =
+document.getElementById("imagenCruz");
+
+imagenCruz.addEventListener("error", function () {
+    const rutaFallida =
+        this.getAttribute("src");
+
+    console.error(
+        "No se encontró la imagen:",
+        rutaFallida
+    );
+
+    if (
+        rutaFallida !== "cruz.png" &&
+        rutaFallida !== "./cruz.png"
+    ) {
+        this.src = "./cruz.png";
+        return;
+    }
+
+    /*
+     * Si tampoco existe cruz.png, se detiene
+     * el intento para evitar un ciclo de errores.
+     */
+    this.removeAttribute("src");
+    this.style.display = "none";
+});
+
+const selectorColorPlacaBox =
+document.getElementById("selectorColorPlacaBox");
+
+const selectorColorPlaca =
+document.getElementById("selectorColorPlaca");
+
+const radioOtroColor =
+document.getElementById("radioOtroColor");
+
+const placaBlanca =
+document.getElementById("placaBlanca");
+
+const placaNegra =
+document.getElementById("placaNegra");
+
+const colorPlacaSeleccionado =
+document.getElementById("colorPlacaSeleccionado");
+
+const codigoColorPlaca =
+document.getElementById("codigoColorPlaca");
+
+const circuloColorElegido =
+document.getElementById("circuloColorElegido");
+
+const muestraPersonalizada =
+document.getElementById("muestraPersonalizada");
+
+const previewNombre =
+document.getElementById("previewNombre");
+
+const previewFechas =
+document.getElementById("previewFechas");
+
+const previewParte =
+document.getElementById("previewParte");
+
+const previewOracion =
+document.getElementById("previewOracion");
+
+const epd =
+document.querySelector(".epd");
+
+const textosPlaca = [
+previewNombre,
+previewOracion,
+previewFechas,
+previewParte,
+epd
+].filter(Boolean);
+
+let colorLetrasSeleccionado = false;
+
+function actualizarContrastePlaca(color){
+
+const colorLimpio =
+color.replace("#","");
+
+const rojo =
+parseInt(
+colorLimpio.substring(0,2),
+16
+);
+
+const verde =
+parseInt(
+colorLimpio.substring(2,4),
+16
+);
+
+const azul =
+parseInt(
+colorLimpio.substring(4,6),
+16
+);
+
+const luminosidad =
+(
+rojo * 299 +
+verde * 587 +
+azul * 114
+) / 1000;
+
+const colorTexto =
+luminosidad > 155
+? "#000000"
+: "#ffffff";
+
+if(!colorLetrasSeleccionado){
+
+textosPlaca.forEach(function(elemento){
+
+elemento.style.background = "none";
+
+elemento.style.backgroundClip =
+"initial";
+
+elemento.style.webkitBackgroundClip =
+"initial";
+
+elemento.style.webkitTextFillColor =
+colorTexto;
+
+elemento.style.color =
+colorTexto;
+
+});
+
+}
+
+}  // AQUÍ TERMINA EL PASO 2
+function seleccionarColorPlaca(color, nombre) {
+    placaPreview.style.setProperty(
+        "background-color",
+        color,
+        "important"
+    );
+
+    colorPlacaSeleccionado.value = nombre;
+    selectorColorPlacaBox.style.display = "none";
+
+imagenCruz.style.display = "block";
+
+    if (nombre === "Blanco") {
+        imagenCruz.src = "./cruz-blanca.png";
+    } else if (nombre === "Negro") {
+        imagenCruz.src = "./cruz-negra.png";
+    } else {
+        imagenCruz.src = "./cruz.png";
+    }
+
+    actualizarContrastePlaca(color);
+}
+
+function mostrarSelectorColorPlaca() {
+    selectorColorPlacaBox.style.display = "block";
+    aplicarColorPersonalizado(selectorColorPlaca.value);
+}
+
+function aplicarColorPersonalizado(color) {
+    const colorMayusculas = color.toUpperCase();
+
+    placaPreview.style.setProperty(
+        "background-color",
+        color,
+        "important"
+    );
+
+    colorPlacaSeleccionado.value =
+        "Otro color: " + colorMayusculas;
+
+    codigoColorPlaca.textContent = colorMayusculas;
+    circuloColorElegido.style.backgroundColor = color;
+    muestraPersonalizada.style.background = color;
+
+    /* Para colores personalizados se utiliza la cruz original. */
+    imagenCruz.src = "./cruz.png";
+
+    actualizarContrastePlaca(color);
+}
+
+placaBlanca.addEventListener("change", function () {
+    if (this.checked) {
+        seleccionarColorPlaca("#ffffff", "Blanco");
+    }
+});
+
+placaNegra.addEventListener("change", function () {
+    if (this.checked) {
+        seleccionarColorPlaca("#111111", "Negro");
+    }
+});
+
+radioOtroColor.addEventListener("change", function () {
+    if (this.checked) {
+        mostrarSelectorColorPlaca();
+    }
+});
+
+selectorColorPlaca.addEventListener("input", function () {
+    radioOtroColor.checked = true;
+    aplicarColorPersonalizado(this.value);
+});
+
+/* Estado inicial: placa blanca y textos negros */
+placaBlanca.checked = true;
+colorPlacaSeleccionado.value = "Blanco";
+
+placaPreview.style.setProperty(
+    "background-color",
+    "#ffffff",
+    "important"
+);
+
+imagenCruz.src = "./cruz-blanca.png";
+selectorColorPlacaBox.style.display = "none";
+actualizarContrastePlaca("#ffffff");
+
+const catalogo = [
+
+"linear-gradient(180deg,#450050,#e753fe)",
+"linear-gradient(180deg,#001f65,#6895fd)",
+"linear-gradient(180deg,#7af6ee,#eafffe)",
+"linear-gradient(180deg,#58e1b5,#4490ad,#0b1f3e)",
+"linear-gradient(180deg,#7cce6b,#d8ffd0)",
+"linear-gradient(180deg,#226214,#43cc25)",
+"linear-gradient(180deg,#ffda6a,#fff7de)",
+"linear-gradient(180deg,#878274,#24221a)",
+"linear-gradient(180deg,#888888,#000000)",
+"linear-gradient(180deg,#e9f0f3,#a2a5ac)",
+"linear-gradient(180deg,#a5acb9,#303643)",
+"linear-gradient(180deg,#dfdcda,#858176)",
+"linear-gradient(180deg,#feffff,#c5c5c5)",
+"linear-gradient(180deg,#f093ff,#fdf1ff)",
+"linear-gradient(180deg,#fffcf5,#d8d5ca)",
+"linear-gradient(180deg,#997300,#ffc000)",
+"linear-gradient(180deg,#ff9869,#ffd2bd)",
+"linear-gradient(180deg,#963e15,#f4773e)",
+
+"linear-gradient(90deg,#ff7c90,#ffe1a4)",
+"linear-gradient(90deg,#eb4b3f,#f0945b)",
+"linear-gradient(90deg,#f3b0f2,#fdf5b9)",
+"linear-gradient(90deg,#e76366,#8355eb)",
+"linear-gradient(90deg,#ed76bc,#f9da73)",
+"linear-gradient(90deg,#8758f1,#eb9362)",
+"linear-gradient(90deg,#e894ff,#ff6a92)",
+"linear-gradient(90deg,#5c6ff4,#e870c2)",
+"linear-gradient(90deg,#224aa8,#b56fdc)",
+"linear-gradient(90deg,#94b9ff,#e894ff)",
+"linear-gradient(90deg,#62bfd4,#f1dd76)",
+"linear-gradient(90deg,#4898ab,#90d46c)",
+"linear-gradient(90deg,#f19a5c,#f9db6f)",
+"linear-gradient(90deg,#731919,#db71a1)",
+"linear-gradient(90deg,#cdffd8,#94b9ff)",
+
+"linear-gradient(65deg,#6a1523,#ffc987)",
+
+"linear-gradient(45deg,#381313,#ee8e71)",
+"linear-gradient(45deg,#132c17,#4d6528,#a1ae1c,#eddb80)",
+"linear-gradient(45deg,#3b2222,#654328,#b59840,#ffeaaa)",
+"linear-gradient(45deg,#461248,#a93747,#f2a15f,#ffd6b6)",
+"linear-gradient(45deg,#431043,#d34681)",
+"linear-gradient(45deg,#1a1054,#255ff1)",
+"linear-gradient(45deg,#121521,#38476b,#b6192e,#ffc1ac)",
+"linear-gradient(45deg,#0e1938,#6b41bf,#359dd2,#ffc2c3)",
+"linear-gradient(45deg,#000b21,#003f82,#4ca2b5,#ffd27f)",
+"linear-gradient(45deg,#091e27,#48f0e7)",
+"linear-gradient(45deg,#aaff4e,#9a6bff,#ff44da)",
+"linear-gradient(45deg,#082122,#295b53,#19b35c,#fcff9a)",
+"linear-gradient(45deg,#6ae70e,#08fded,#0072ed)",
+"linear-gradient(45deg,#f8ad00,#e13333,#3992ff)",
+"linear-gradient(45deg,#faee21,#6fe600,#00ffff)",
+"linear-gradient(45deg,#ff7a3c,#ffce81)",
+"linear-gradient(45deg,#e48005,#8a3300,#14cc97)",
+"linear-gradient(45deg,#fe8356,#ffee22,#a4f402)",
+"linear-gradient(45deg,#ff4353,#ffd294)",
+"linear-gradient(45deg,#c90003,#185100,#64aa38)",
+"linear-gradient(45deg,#f960eb,#ff854d,#fff41f)",
+"linear-gradient(45deg,#8114b0,#ff4291,#f7ff3c)",
+"linear-gradient(45deg,#7f30cb,#01dcba)",
+"linear-gradient(45deg,#7a2c9e,#dd5789,#fedc2a)",
+"linear-gradient(45deg,#7425e3,#1fb1ff,#64fe3e)",
+"linear-gradient(45deg,#9358f7,#6197ee,#10d7e2)",
+"linear-gradient(45deg,#745bff,#f95bf6,#ff7a41)",
+"linear-gradient(45deg,#6a8aff,#b2fbff)",
+"linear-gradient(45deg,#7794b6,#dffaff)",
+"linear-gradient(45deg,#007daf,#c771d4,#ffb829)",
+"linear-gradient(45deg,#1b9986,#c4fff0)",
+"linear-gradient(45deg,#1ebda5,#e26a00,#ffe046)",
+
+"linear-gradient(0deg,#888888,#ffffff)",
+"linear-gradient(0deg,#490e24,#f35e61,#ffe385)",
+"linear-gradient(0deg,#000000,#bf8b16)",
+"linear-gradient(0deg,#113320,#268d7c,#c2ffb4)",
+"linear-gradient(0deg,#000000,#3432c7)",
+"linear-gradient(0deg,#000000,#ffffff)",
+"linear-gradient(0deg,#3c2626,#c29585,#f5e9ae)"
+
+];
+
+const catalogoColores =
+document.getElementById("catalogoColores");
+
+const colorSeleccionado =
+document.getElementById("colorSeleccionado");
+
+const mensajeColor =
+document.getElementById("mensajeColor");
+
+catalogo.forEach(function(gradiente, indice){
+
+const muestra =
+document.createElement("button");
+
+const numeroColor =
+indice + 1;
+
+muestra.type = "button";
+muestra.className = "color";
+muestra.style.background = gradiente;
+
+muestra.dataset.numero =
+numeroColor;
+
+muestra.title =
+"Color " + numeroColor;
+muestra.setAttribute(
+"aria-label",
+"Seleccionar color " + numeroColor
+);
+
+muestra.addEventListener("click",function(){
+
+document
+.querySelectorAll("#catalogoColores .color")
+.forEach(function(elemento){
+
+elemento.classList.remove("seleccionado");
+
+});
+
+muestra.classList.add("seleccionado");
+
+colorSeleccionado.value =
+"Color " + numeroColor;
+
+mensajeColor.style.display = "none";
+
+setGradient(gradiente);
+
+});
+
+catalogoColores.appendChild(muestra);
+
+});
+
+const tiposOracionBox =
+document.getElementById("tiposOracionBox");
+
+const oracionPersonalizadaBox =
+document.getElementById("oracionPersonalizadaBox");
+
+const oracionTexto =
+document.getElementById("oracionTexto");
+
+const opcionesTipoOracion =
+document.querySelectorAll(
+'input[name="tipo_oracion"]'
+);
+
+function toggleOracion(mostrar) {
+    if (mostrar) {
+        tiposOracionBox.style.display = "block";
+
+        opcionesTipoOracion.forEach(function (opcion) {
+            opcion.required = true;
+        });
+
+        return;
+    }
+
+    tiposOracionBox.style.display = "none";
+    oracionPersonalizadaBox.style.display = "none";
+    previewOracion.style.display = "none";
+
+    oracionTexto.required = false;
+    oracionTexto.value = "";
+
+    opcionesTipoOracion.forEach(function (opcion) {
+        opcion.checked = false;
+        opcion.required = false;
+    });
+}
+
+function seleccionarTipoOracion(tipo) {
+    previewOracion.style.display = "block";
+
+    if (tipo === "Personalizada") {
+        oracionPersonalizadaBox.style.display = "block";
+        oracionTexto.required = true;
+
+        previewOracion.textContent =
+            oracionTexto.value.trim() ||
+            "Oración personalizada";
+
+        oracionTexto.focus();
+        return;
+    }
+
+    oracionPersonalizadaBox.style.display = "none";
+    oracionTexto.required = false;
+    oracionTexto.value = "";
+
+    previewOracion.textContent =
+        "Oración " + tipo.toLowerCase();
+}
+
+oracionTexto.addEventListener("input", function () {
+    previewOracion.textContent =
+        this.value.trim() ||
+        "Oración personalizada";
+});
+
+function toggleBusqueda(mostrar) {
+    const referenciasBox =
+        document.getElementById("referenciasBox");
+
+    const referencias =
+        document.getElementById(
+            "referenciasCercanas"
+        );
+
+    if (mostrar) {
+        referenciasBox.style.display = "block";
+
+        if (referencias) {
+            referencias.required = true;
+        }
+    } else {
+        referenciasBox.style.display = "none";
+
+        if (referencias) {
+            referencias.required = false;
+            referencias.value = "";
+        }
+    }
+}
+
+function togglePago(){
+
+const opcion =
+document.getElementById("opcionPago").value;
+
+const comprobanteBox =
+document.getElementById("comprobanteBox");
+
+const comprobante =
+document.getElementById("comprobante");
+
+if(opcion === "transferencia"){
+
+comprobanteBox.style.display = "block";
+comprobante.required = true;
+
+}else{
+
+comprobanteBox.style.display = "none";
+comprobante.required = false;
+comprobante.value = "";
+
+}
+
+}
+
+const parteDe =
+document.getElementById("parteDe");
+
+parteDe.addEventListener(
+"input",
+function(){
+
+previewParte.innerHTML =
+"De parte de sus<br>" +
+this.value;
+}
+);
+
+const fechaNacimiento =
+document.getElementById("fechaNacimiento");
+
+const fechaDefuncion =
+document.getElementById("fechaDefuncion");
+
+function formatearFecha(fechaTexto){
+
+if(!fechaTexto){
+return "";
+}
+
+const partes = fechaTexto.split("-");
+
+const anio = Number(partes[0]);
+const mesNumero = Number(partes[1]);
+const dia = Number(partes[2]);
+
+const meses = [
+"enero",
+"febrero",
+"marzo",
+"abril",
+"mayo",
+"junio",
+"julio",
+"agosto",
+"septiembre",
+"octubre",
+"noviembre",
+"diciembre"
+];
+
+const mes = meses[mesNumero - 1];
+
+if(anio >= 2000){
+
+return `${dia} de ${mes} del ${anio}`;
+
+}
+
+return `${dia} de ${mes} de ${anio}`;
+
+}
+
+function actualizarFechas(){
+
+const nacimiento =
+formatearFecha(fechaNacimiento.value);
+
+const defuncion =
+formatearFecha(fechaDefuncion.value);
+
+previewFechas.innerHTML =
+`${nacimiento}<br>${defuncion}`;
+
+}
+
+fechaNacimiento.addEventListener(
+"input",
+actualizarFechas
+);
+
+fechaDefuncion.addEventListener(
+"input",
+actualizarFechas
+);
+
+const texto =
+document.getElementById("texto");
+texto.addEventListener('input',function(){
+
+previewNombre.textContent =
+this.value || 'Tu Nombre Aquí';
+
+});
+
+function setFont(font) {
+    textosPlaca.forEach(function (elemento) {
+        elemento.style.fontFamily =
+            '"' + font + '", Arial, sans-serif';
+
+             if (font === "Montserrat") {
+            elemento.style.fontWeight = "900";
+        } else if (elemento === previewNombre) {
+            elemento.style.fontWeight = "bold";
+        } else {
+            elemento.style.fontWeight = "normal";
+        }
+    });
+}
+
+function setColor(color){
+
+colorLetrasSeleccionado = true;
+
+textosPlaca.forEach(function(elemento){
+
+elemento.style.background =
+"none";
+
+elemento.style.backgroundClip =
+"initial";
+
+elemento.style.webkitBackgroundClip =
+"initial";
+
+elemento.style.webkitTextFillColor =
+color;
+
+elemento.style.color =
+color;
+
+});
+
+} // AQUÍ TERMINA EL PASO 3
+
+function setGradient(gradient){
+
+colorLetrasSeleccionado = true;
+
+textosPlaca.forEach(function(elemento){
+
+elemento.style.background =
+gradient;
+
+elemento.style.backgroundClip =
+"text";
+
+elemento.style.webkitBackgroundClip =
+"text";
+
+elemento.style.webkitTextFillColor =
+"transparent";
+
+elemento.style.color =
+"transparent";
+
+});
+
+}
+
+const formularioSolicitud =
+    document.getElementById("formularioSolicitud");
+
+const estadoGeneracion =
+    document.getElementById("estadoGeneracion");
+
+const fichaSolicitud =
+    document.getElementById("fichaSolicitud");
+
+const imagenSolicitud =
+    document.getElementById("imagenSolicitud");
+
+const botonEnviar =
+    document.getElementById("botonEnviar");
+
+/*
+ * Sustituye el texto de abajo por el Form ID
+ * que aparece en el panel de Forminit.
+ */
+const FORMINIT_FORM_ID =
+    "m7li57qktli";
+
+/*
+ * Inicializa el SDK oficial de Forminit.
+ * El formulario debe estar configurado como Public.
+ */
+const forminit = new Forminit();
+
+let solicitudEnviandose = false;
+
+function obtenerValor(nombre){
+
+const campo =
+formularioSolicitud.elements[nombre];
+
+if(!campo){
+return "";
+}
+
+if(campo instanceof RadioNodeList){
+return campo.value || "";
+}
+
+return campo.value || "";
+
+}
+
+function textoSeleccionado(nombre){
+
+const campo =
+formularioSolicitud.elements[nombre];
+
+if(!campo){
+return "";
+}
+
+if(campo.tagName === "SELECT"){
+
+const opcion =
+campo.options[campo.selectedIndex];
+
+return opcion ? opcion.textContent.trim() : "";
+
+}
+
+return campo.value || "";
+
+}
+
+function escribirFicha(id, valor, reemplazo){
+
+const elemento =
+document.getElementById(id);
+
+if(!elemento){
+return;
+}
+
+elemento.textContent =
+valor || reemplazo || "No especificado";
+
+}
+
+function obtenerOracionFicha() {
+    const usarOracion = obtenerValor("usar_oracion");
+
+    if (usarOracion !== "si") {
+        return "No";
+    }
+
+    const tipo = obtenerValor("tipo_oracion");
+
+    if (tipo === "Personalizada") {
+        return (
+            obtenerValor("oracion_personalizada") ||
+            "Personalizada, sin texto"
+        );
+    }
+
+    return tipo || "Sí, sin tipo seleccionado";
+}
+
+function prepararFichaSolicitud(){
+
+escribirFicha(
+"fichaCliente",
+obtenerValor("cliente")
+);
+
+escribirFicha(
+"fichaTelefono",
+obtenerValor("telefono")
+);
+
+escribirFicha(
+"fichaPago",
+textoSeleccionado("opcion_pago")
+);
+
+escribirFicha(
+"fichaServicio",
+textoSeleccionado("servicio")
+);
+
+escribirFicha(
+"fichaDifunto",
+obtenerValor("nombre_difunto")
+);
+
+escribirFicha(
+"fichaFuente",
+obtenerValor("fuente")
+);
+
+escribirFicha(
+"fichaColorTexto",
+colorSeleccionado.value
+);
+
+escribirFicha(
+"fichaColorPlaca",
+colorPlacaSeleccionado.value
+);
+
+escribirFicha(
+"fichaNacimiento",
+formatearFecha(
+fechaNacimiento.value
+)
+);
+
+escribirFicha(
+"fichaDefuncion",
+formatearFecha(
+fechaDefuncion.value
+)
+);
+
+escribirFicha(
+"fichaDedicatoria",
+obtenerValor("dedicatoria")
+);
+
+escribirFicha(
+"fichaOracion",
+obtenerOracionFicha()
+);
+
+const largo =
+obtenerValor("largo");
+
+const ancho =
+obtenerValor("ancho");
+
+let medidas = "";
+
+if(largo || ancho){
+
+medidas =
+(largo || "Sin largo") +
+" × " +
+(ancho || "Sin ancho") +
+" pulgadas";
+
+}
+
+escribirFicha(
+"fichaMedidas",
+medidas
+);
+
+escribirFicha(
+"fichaLote",
+obtenerValor("lote")
+);
+
+escribirFicha(
+"fichaLinea",
+obtenerValor("linea")
+);
+
+escribirFicha(
+"fichaBusqueda",
+obtenerValor("solicitar_busqueda")
+);
+
+escribirFicha(
+"fichaReferencias",
+obtenerValor("referencias_cercanas")
+);
+
+escribirFicha(
+"fichaComentarios",
+obtenerValor("comentarios")
+);
+
+}
+
+function crearDatosForminit() {
+    const datos = new FormData();
+
+    /*
+     * Información principal del cliente.
+     */
+    datos.append(
+        "fi-sender-fullName",
+        obtenerValor("cliente")
+    );
+
+   datos.append(
+    "fi-text-telefono",
+    obtenerValor("telefono")
+);
+
+
+    /*
+     * Datos del pedido.
+     */
+    datos.append(
+        "fi-text-metodo_pago",
+        textoSeleccionado("opcion_pago")
+    );
+
+    datos.append(
+        "fi-text-tipo_servicio",
+        textoSeleccionado("servicio")
+    );
+
+    datos.append(
+        "fi-text-nombre_difunto",
+        obtenerValor("nombre_difunto")
+    );
+
+    datos.append(
+        "fi-text-fuente",
+        obtenerValor("fuente")
+    );
+
+    datos.append(
+        "fi-text-color_texto",
+        colorSeleccionado.value
+    );
+
+    datos.append(
+        "fi-text-color_placa",
+        colorPlacaSeleccionado.value
+    );
+
+    datos.append(
+        "fi-date-nacimiento",
+        obtenerValor("nacimiento")
+    );
+
+    datos.append(
+        "fi-date-defuncion",
+        obtenerValor("defuncion")
+    );
+
+    datos.append(
+        "fi-text-dedicatoria",
+        obtenerValor("dedicatoria")
+    );
+
+    datos.append(
+        "fi-text-oracion",
+        obtenerOracionFicha()
+    );
+
+    /*
+     * Medidas.
+     */
+    datos.append(
+        "fi-number-largo",
+        obtenerValor("largo")
+    );
+
+    datos.append(
+        "fi-number-ancho",
+        obtenerValor("ancho")
+    );
+
+    /*
+     * Ubicación de la tumba.
+     */
+    datos.append(
+        "fi-number-lote",
+        obtenerValor("lote")
+    );
+
+    datos.append(
+        "fi-number-linea",
+        obtenerValor("linea")
+    );
+
+    datos.append(
+        "fi-text-solicitar_busqueda",
+        obtenerValor("solicitar_busqueda")
+    );
+
+    datos.append(
+        "fi-text-referencias_cercanas",
+        obtenerValor("referencias_cercanas")
+    );
+
+    datos.append(
+        "fi-text-comentarios",
+        obtenerValor("comentarios")
+    );
+
+    /*
+     * Archivos opcionales seleccionados
+     * manualmente por el cliente.
+     */
+    const comprobante =
+        document.getElementById("comprobante");
+
+    if (
+        comprobante &&
+        comprobante.files &&
+        comprobante.files.length > 0
+    ) {
+        datos.append(
+            "fi-file-comprobante",
+            comprobante.files[0]
+        );
+    }
+
+    const fotografia =
+        document.getElementById("fotografia");
+
+    if (
+        fotografia &&
+        fotografia.files &&
+        fotografia.files.length > 0
+    ) {
+        datos.append(
+            "fi-file-fotografia",
+            fotografia.files[0]
+        );
+    }
+
+    /*
+     * PNG creado automáticamente con html2canvas.
+     */
+    if (
+        imagenSolicitud &&
+        imagenSolicitud.files &&
+        imagenSolicitud.files.length > 0
+    ) {
+        datos.append(
+            "fi-file-imagen_solicitud",
+            imagenSolicitud.files[0]
+        );
+    }
+
+    return datos;
+}
+
+function convertirBlobADataURL(blob){
+
+return new Promise(function(resolve,reject){
+
+const lector =
+new FileReader();
+
+lector.onload = function(){
+
+resolve(lector.result);
+
+};
+
+lector.onerror = function(){
+
+reject(
+new Error(
+"No se pudo convertir una imagen."
+)
+);
+
+};
+
+lector.readAsDataURL(blob);
+
+});
+
+}
+async function convertirImagenesFichaADataURL() {
+    const imagenes = Array.from(
+        fichaSolicitud.querySelectorAll("img")
+    );
+
+    for (const imagen of imagenes) {
+        /*
+         * Si la imagen ya fue convertida, no se
+         * vuelve a procesar.
+         */
+        if (imagen.src.startsWith("data:")) {
+            continue;
+        }
+
+        try {
+            console.log(
+                "Intentando convertir:",
+                imagen.src
+            );
+
+            const respuesta = await fetch(
+                imagen.src,
+                {
+                    cache: "no-store"
+                }
+            );
+
+            console.log(
+                "Estado de la imagen:",
+                respuesta.status,
+                imagen.src
+            );
+
+            if (!respuesta.ok) {
+                throw new Error(
+                    "No se pudo cargar la imagen: " +
+                    imagen.src +
+                    " (HTTP " +
+                    respuesta.status +
+                    ")"
+                );
+            }
+
+            const blob =
+                await respuesta.blob();
+
+            const dataURL =
+                await convertirBlobADataURL(blob);
+
+            imagen.removeAttribute("crossorigin");
+            imagen.src = dataURL;
+        } catch (error) {
+            console.error(
+                "Error al convertir la imagen:",
+                imagen.src,
+                error
+            );
+
+            throw error;
+        }
+    }
+}
+
+
+function esperarImagenes(contenedor){
+
+const imagenes =
+Array.from(
+contenedor.querySelectorAll("img")
+);
+
+return Promise.all(
+imagenes.map(function(imagen){
+
+if(imagen.complete){
+return Promise.resolve();
+}
+
+return new Promise(function(resolve){
+
+imagen.addEventListener(
+"load",
+resolve,
+{once:true}
+);
+
+imagen.addEventListener(
+"error",
+resolve,
+{once:true}
+);
+
+});
+
+})
+);
+
+}
+
+function convertirCanvasEnBlob(canvas){
+
+return new Promise(function(resolve,reject){
+
+canvas.toBlob(
+function(blob){
+
+if(blob){
+resolve(blob);
+}else{
+reject(
+new Error(
+"No se pudo crear la imagen."
+)
+);
+}
+
+},
+"image/png",
+1
+);
+
+});
+
+}
+
+function colocarArchivoEnInput(blob){
+
+const nombreDifunto =
+obtenerValor("nombre_difunto") ||
+"remodelaciones-arzola";
+
+const nombreLimpio =
+nombreDifunto
+.toLowerCase()
+.normalize("NFD")
+.replace(/[\u0300-\u036f]/g,"")
+.replace(/ñ/g,"n")
+.replace(/\s+/g,"-")
+.replace(/[^a-z0-9-]/g,"")
+.replace(/-+/g,"-")
+.replace(/^-|-$/g,"");
+
+const nombreArchivo =
+"solicitud-" +
+(nombreLimpio || "remodelaciones-arzola") +
+".png";
+
+const archivo =
+new File(
+[blob],
+nombreArchivo,
+{
+type:"image/png",
+lastModified:Date.now()
+}
+);
+
+const transferencia =
+new DataTransfer();
+
+transferencia.items.add(archivo);
+
+imagenSolicitud.files =
+transferencia.files;
+
+return archivo;
+}
+
+formularioSolicitud.addEventListener(
+    "submit",
+    async function (evento) {
+        evento.preventDefault();
+
+        if (solicitudEnviandose) {
+            return;
+        }
+
+        if (!botonEnviar) {
+            console.error(
+                "No se encontró el botón de envío."
+            );
+
+            estadoGeneracion.style.display = "block";
+            estadoGeneracion.style.background = "#ffe5e5";
+            estadoGeneracion.style.color = "#8b0000";
+            estadoGeneracion.textContent =
+                "Error interno: no se encontró el botón de envío.";
+
+            return;
+        }
+
+        if (
+    !FORMINIT_FORM_ID ||
+    FORMINIT_FORM_ID === "PEGA_AQUI_TU_FORM_ID"
+) {
+    estadoGeneracion.style.display = "block";
+    estadoGeneracion.style.background = "#ffe5e5";
+    estadoGeneracion.style.color = "#8b0000";
+    estadoGeneracion.textContent =
+        "Falta configurar el Form ID de Forminit.";
+
+    return;
+}
+
+        if (!formularioSolicitud.checkValidity()) {
+            formularioSolicitud.reportValidity();
+
+            estadoGeneracion.style.display = "block";
+            estadoGeneracion.style.background = "#ffe5e5";
+            estadoGeneracion.style.color = "#8b0000";
+            estadoGeneracion.textContent =
+                "Falta completar o seleccionar un campo obligatorio.";
+
+            return;
+        }
+
+        if (!colorSeleccionado.value) {
+            mensajeColor.style.display = "block";
+
+            catalogoColores.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+            return;
+        }
+
+        try {
+            solicitudEnviandose = true;
+
+            botonEnviar.disabled = true;
+            botonEnviar.textContent =
+                "Preparando solicitud...";
+
+            if (typeof html2canvas !== "function") {
+                throw new Error(
+                    "No se cargó la biblioteca html2canvas."
+                );
+            }
+
+            if (typeof Forminit !== "function") {
+                throw new Error(
+                    "No se cargó el SDK de Forminit."
+                );
+            }
+
+            estadoGeneracion.style.display = "block";
+            estadoGeneracion.style.background = "#fff3cf";
+            estadoGeneracion.style.color = "#604500";
+            estadoGeneracion.textContent =
+                "Preparando imagen de la solicitud...";
+
+            prepararFichaSolicitud();
+
+            await convertirImagenesFichaADataURL();
+            await esperarImagenes(fichaSolicitud);
+
+            if (document.fonts && document.fonts.ready) {
+                await document.fonts.ready;
+            }
+
+            await new Promise(function (resolve) {
+                requestAnimationFrame(function () {
+                    requestAnimationFrame(resolve);
+                });
+            });
+
+            const anchoFicha =
+                fichaSolicitud.scrollWidth;
+
+            const altoFicha =
+                fichaSolicitud.scrollHeight;
+
+            if (!anchoFicha || !altoFicha) {
+                throw new Error(
+                    "La ficha no tiene dimensiones válidas."
+                );
+            }
+
+            const canvas = await html2canvas(
+                fichaSolicitud,
+                {
+                    backgroundColor: "#ffffff",
+                    scale: 1,
+                    useCORS: false,
+                    allowTaint: false,
+                    logging: false,
+                    width: anchoFicha,
+                    height: altoFicha,
+                    windowWidth: anchoFicha,
+                    windowHeight: altoFicha,
+                    scrollX: 0,
+                    scrollY: 0,
+                    imageTimeout: 15000
+                }
+            );
+
+            const blob =
+                await convertirCanvasEnBlob(canvas);
+
+            const tamanoMB =
+                blob.size / (1024 * 1024);
+
+            console.log(
+                "Tamaño de la imagen generada:",
+                tamanoMB.toFixed(2) + " MB"
+            );
+
+            if (tamanoMB > 3) {
+                throw new Error(
+                    "La imagen generada pesa " +
+                    tamanoMB.toFixed(2) +
+                    " MB. Reduce el contenido o la escala."
+                );
+            }
+
+            colocarArchivoEnInput(blob);
+
+            /*
+             * Se construye el FormData después de crear
+             * la imagen para que incluya el PNG generado.
+             */
+            const datosForminit =
+                crearDatosForminit();
+
+            estadoGeneracion.style.background =
+                "#e6f4ea";
+
+            estadoGeneracion.style.color =
+                "#166534";
+
+            estadoGeneracion.textContent =
+                "Imagen generada. Enviando solicitud...";
+
+            botonEnviar.textContent =
+                "Enviando solicitud...";
+
+            const resultado =
+                await forminit.submit(
+                    FORMINIT_FORM_ID,
+                    datosForminit
+                );
+
+            if (resultado.error) {
+                throw new Error(
+                    resultado.error.message ||
+                    "Forminit rechazó la solicitud."
+                );
+            }
+
+            console.log(
+                "Solicitud enviada correctamente:",
+                resultado.data
+            );
+
+            solicitudEnviandose = false;
+
+            estadoGeneracion.style.display = "block";
+            estadoGeneracion.style.background = "#e6f4ea";
+            estadoGeneracion.style.color = "#166534";
+            estadoGeneracion.textContent =
+                "Solicitud enviada correctamente.";
+
+            botonEnviar.disabled = false;
+            botonEnviar.textContent =
+                "Enviar otra solicitud";
+
+            /*
+             * Si Forminit devuelve una redirección,
+             * se utiliza. En caso contrario se abre
+             * nuestra página de agradecimiento.
+             */
+            if (resultado.redirectUrl) {
+                window.location.href =
+                    resultado.redirectUrl;
+            } else {
+                window.location.href =
+                    "./gracias.html";
+            }
+        } catch (error) {
+            console.error(
+                "Error al enviar la solicitud:",
+                error
+            );
+
+            solicitudEnviandose = false;
+
+            estadoGeneracion.style.display = "block";
+            estadoGeneracion.style.background = "#ffe5e5";
+            estadoGeneracion.style.color = "#8b0000";
+            estadoGeneracion.textContent =
+                "No se pudo enviar la solicitud: " +
+                (
+                    error.message ||
+                    "Error desconocido"
+                );
+
+            botonEnviar.disabled = false;
+            botonEnviar.textContent =
+                "Enviar Solicitud";
+        }
+    }
+);
+
+</script>
+
+</body>
+</html>
